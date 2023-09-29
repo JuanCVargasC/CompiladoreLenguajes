@@ -1,17 +1,15 @@
-## Getting Started
+## Aplicación de Lenguajes formales para análisis y detección de lenguaje de código para Análisis básico Estadístico codificado en lenguaje Perl, Ruby y Julia
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+Este proyecto tiene como objetivo la creación de un compilador con expresiones regulares y gramáticas regulares ER Y GR. El proyecto tiene como objetivo implementar los conceptos vistos en clase,  se realizará un compilador que reconocerá 3 diferentes lenguajes como: PERL, RUBY y JULIA los cuales se deberán crear 3 librerías para cada lenguaje obtener sus estructuras y componentes, así como sus palabras reservadas para finalmente poder realizar el cálculo de las medidas de tendencia central con cada uno de los lenguajes. 
 
 ## Folder Structure
 
 The workspace contains two folders by default, where:
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+- `src`: Compiler
+- `lib`: JFlex, CompilerTools
 
 Meanwhile, the compiled output files will be generated in the `bin` folder by default.
-
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
 
 ## Dependency Management
 
