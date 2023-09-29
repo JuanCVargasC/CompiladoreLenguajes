@@ -1,0 +1,24 @@
+numeros = [1, 2, 3, 4, 4, 5, 5, 6, 6, 6, 7, 8, 9]
+
+media = sum(numeros) / length(numeros)
+
+frecuencia = Dict{Int, Int}()
+for numero in numeros
+    frecuencia[numero] = get(frecuencia, numero, 0) + 1
+end
+max_frecuencia = maximum(values(frecuencia))
+moda = [k for (k, v) in frecuencia if v == max_frecuencia]
+
+
+numeros_ordenados = sort(numeros)
+longitud = length(numeros_ordenados)
+mediana = if isodd(longitud)
+            numeros_ordenados[(longitud + 1) / 2]
+          else
+            mean(numeros_ordenados[longitud / 2 : longitud / 2 + 1])
+          end
+
+
+println("Media: $media")
+println("Moda: $(join(moda, ', '))")
+println("Mediana: $mediana")

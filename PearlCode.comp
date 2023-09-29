@@ -1,0 +1,35 @@
+use strict;
+use warnings;
+use List::Util qw(sum);
+
+my @numeros = (1, 2, 3, 4, 4, 5, 5, 6, 6, 6, 7, 8, 9);
+
+my $total = sum(@numeros);
+my $media = $total / @numeros;
+
+my %frecuencia;
+$frecuencia{$_}++ for @numeros;
+my @moda;
+my $max_frecuencia = 0;
+foreach my $numero (keys %frecuencia) {
+    if ($frecuencia{$numero} > $max_frecuencia) {
+        @moda = ($numero);
+        $max_frecuencia = $frecuencia{$numero};
+    } elsif ($frecuencia{$numero} == $max_frecuencia) {
+        push @moda, $numero;
+    }
+}
+
+my @numeros_ordenados = sort { $a <=> $b } @numeros;
+my $longitud = @numeros_ordenados;
+my $mediana;
+if ($longitud %  2 == 0) {
+    $mediana = ($numeros_ordenados[$longitud / 2 - 1] + $numeros_ordenados[$longitud / 2]) / 2;
+} else {
+    $mediana = $numeros_ordenados[int($longitud / 2)];
+}
+
+# Imprimir resultados
+print "Media: $media \n ";
+print "Moda: @moda \n ";
+print "Mediana: $mediana \n ";
