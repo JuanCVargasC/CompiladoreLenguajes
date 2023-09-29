@@ -305,7 +305,7 @@ public class Compilador extends javax.swing.JFrame {
                 String nombreArchivo = archivoAbierto.getName();
                 String mensaje = "";
 
-                if (nombreArchivo.toLowerCase().contains("pearl")) {
+                if (nombreArchivo.toLowerCase().contains("pearl") || nombreArchivo.toLowerCase().contains("perl")) {
                     mensaje = "Pearl";
                 } else if (nombreArchivo.toLowerCase().contains("ruby")) {
                     mensaje = "Ruby";
