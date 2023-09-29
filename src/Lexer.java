@@ -4,7 +4,6 @@
 
 import compilerTools.Token;
 
-// See https://github.com/jflex-de/jflex/issues/222
 @SuppressWarnings("FallThrough")
 class Lexer {
 
