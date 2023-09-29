@@ -38,9 +38,6 @@ public class Compilador extends javax.swing.JFrame {
     private HashMap<String, String> identificadores;//
     private boolean codeHasBeenCompiled = false;
 
-    /**
-     * new Compilador
-     */
     public Compilador() {
         initComponents();
         init();
@@ -66,7 +63,7 @@ public class Compilador extends javax.swing.JFrame {
         Functions.insertAsteriskInName(this, jtpCode, () -> {// editor añade el asterisco a linea editada
             timerKeyReleased.restart();
         });
-        // inciamos nuestros arraylist vacios
+        // inciamos nuestros arraylist
         tokens = new ArrayList<>();
         errors = new ArrayList<>();
         textsColor = new ArrayList<>();
@@ -78,8 +75,6 @@ public class Compilador extends javax.swing.JFrame {
     }
 
     @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated
-    // Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         rootPanel = new javax.swing.JPanel();
@@ -160,7 +155,7 @@ public class Compilador extends javax.swing.JFrame {
         btnCompilar.setText("Compilar");
         btnCompilar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JOptionPane.showMessageDialog(null, "Lenguaje de Programacion PEARL",
+                JOptionPane.showMessageDialog(null, "Lenguaje de Programacion Ruby",
                         "INFORMATION_MESSAGE", JOptionPane.INFORMATION_MESSAGE);
                 btnCompilarActionPerformed(evt);
             }
@@ -275,31 +270,31 @@ public class Compilador extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnNuevoActionPerformed
+    private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {
         directorio.New();
         clearFields();
     }// GEN-LAST:event_btnNuevoActionPerformed
 
-    private void btnAbrirActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnAbrirActionPerformed
+    private void btnAbrirActionPerformed(java.awt.event.ActionEvent evt) {
         if (directorio.Open()) {
             colorAnalysis();
             clearFields();
         }
-    }// GEN-LAST:event_btnAbrirActionPerformed
+    }
 
-    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnGuardarActionPerformed
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {
         if (directorio.Save()) {
             clearFields();
         }
-    }// GEN-LAST:event_btnGuardarActionPerformed
+    }
 
-    private void btnGuardarCActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnGuardarCActionPerformed
+    private void btnGuardarCActionPerformed(java.awt.event.ActionEvent evt) {
         if (directorio.SaveAs()) {
             clearFields();
         }
-    }// GEN-LAST:event_btnGuardarCActionPerformed
+    }
 
-    private void btnCompilarActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnCompilarActionPerformed
+    private void btnCompilarActionPerformed(java.awt.event.ActionEvent evt) {
         if (getTitle().contains("*") || getTitle().equals(title)) {
             if (directorio.Save()) {
                 compile();
@@ -307,9 +302,9 @@ public class Compilador extends javax.swing.JFrame {
         } else {
             compile();
         }
-    }// GEN-LAST:event_btnCompilarActionPerformed
+    }
 
-    private void btnEjecutarActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnEjecutarActionPerformed
+    private void btnEjecutarActionPerformed(java.awt.event.ActionEvent evt) {
         btnCompilar.doClick();
         if (codeHasBeenCompiled) {
             if (!errors.isEmpty()) {
@@ -324,9 +319,9 @@ public class Compilador extends javax.swing.JFrame {
 
             }
         }
-    }// GEN-LAST:event_btnEjecutarActionPerformed
+    }
 
-    private void compile() {// limpiar campos y metodos de analisis
+    private void compile() {
         clearFields();
         lexicalAnalysis();
         fillTableTokens();
@@ -366,9 +361,10 @@ public class Compilador extends javax.swing.JFrame {
         Grammar gramatica = new Grammar(tokens, errors);
         /* Eliminar los errores */
         gramatica.delete(new String[] { "ERROR", "ERROR_1", "ERROR_2" });
+        // gramatica.delete(new String[] { "ERROR" });
 
         /* Agrupacion de valores */
-        gramatica.group("VALOR", "(NUMERO|COLOR)", true);
+        gramatica.group("VALOR", "(NUMERO|COLOR|NOMBRE)", true);
 
         /* VAR_PEARLs */
         gramatica.group("VAR_PEARL", "TIPO_DATO IDENTIFICADOR_P OP_ASIG VALOR COMA", true, identProd);
@@ -379,9 +375,9 @@ public class Compilador extends javax.swing.JFrame {
                 3, "ERROR, falta valor de VAR_PEARL [#,%]");
 
         /* VAR_RUBY */
-        gramatica.group("VAR_RUBY", "IDENTIFICADOR_R OP_ASIG VALOR", true, identProd);
-        gramatica.group("VAR_PEARL", "OP_ASIG VALOR", true, identProd);
-        gramatica.group("VAR_PEARL", "OP_ASIG VALOR", true,
+        gramatica.group("VAR_RUBY", "IDENTIFICADOR OP_ASIG VALOR", true, identProd);
+        gramatica.group("VAR_PEARL", "IDENTIFICADOR OP_ASIG VALOR LLAVE_A", true, identProd);
+        gramatica.group("VAR_PEARL", "IDENTIFICADOR OP_ASIG VALOR PARENTESIS_A", true,
                 22, "ERROR, falta Identificador de VAR_RUBY [#,%]");
 
         gramatica.finalLineColumn();
