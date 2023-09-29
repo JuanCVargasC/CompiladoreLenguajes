@@ -303,12 +303,23 @@ public class Compilador extends javax.swing.JFrame {
 
             if (archivoAbierto != null) {
                 String nombreArchivo = archivoAbierto.getName();
-                int index = nombreArchivo.lastIndexOf('.');
-                if (index > 0) {
-                    nombreArchivo = nombreArchivo.substring(0, index);
+                String mensaje = "";
+
+                if (nombreArchivo.toLowerCase().contains("pearl")) {
+                    mensaje = "Pearl";
+                } else if (nombreArchivo.toLowerCase().contains("ruby")) {
+                    mensaje = "Ruby";
+                } else if (nombreArchivo.toLowerCase().contains("julia")) {
+                    mensaje = "Julia";
                 }
-                JOptionPane.showMessageDialog(null, "Lenguaje es: " + nombreArchivo, "Información",
-                        JOptionPane.INFORMATION_MESSAGE);
+
+                if (!mensaje.isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "Archivo abierto: " + mensaje, "Información",
+                            JOptionPane.INFORMATION_MESSAGE);
+                } else {
+                    JOptionPane.showMessageDialog(null, "El archivo abierto no es Ruby, Julia o Pearl.", "Información",
+                            JOptionPane.INFORMATION_MESSAGE);
+                }
             } else {
                 JOptionPane.showMessageDialog(null, "Ningún archivo abierto.", "Información",
                         JOptionPane.INFORMATION_MESSAGE);
@@ -316,6 +327,8 @@ public class Compilador extends javax.swing.JFrame {
         } catch (NoSuchFieldException | IllegalAccessException e) {
             e.printStackTrace();
         }
+
+        ///////
         if (getTitle().contains("*") || getTitle().equals(title)) {
             if (directorio.Save()) {
                 compile();
