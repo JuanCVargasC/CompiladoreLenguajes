@@ -36,7 +36,8 @@ Numero = 0 | [1-9][0-9]*
 /* Identificador PEARL */
 "my"{Identificador} |
 \${Identificador} |
-\@{Identificador} { return token(yytext(), "PEARL_VAR", yyline, yycolumn); }
+\@{Identificador} |
+\%{Identificador} { return token(yytext(), "PEARL_VAR", yyline, yycolumn); }
 
 /* Identificador RUBY */
 {Identificador} { return token(yytext(), "RUBY_VAR", yyline, yycolumn); }
@@ -139,7 +140,9 @@ else { return token(yytext(), "SI_SINO", yyline, yycolumn); }
 "|" |
 "&&" |
 "||" |
-"&" { return token(yytext(), "OP_LOGICO", yyline, yycolumn); }
+"&" |
+">" |
+"<" { return token(yytext(), "OP_LOGICO", yyline, yycolumn); }
 
 /* Operadores matematico */
 {Numero}"+" |
@@ -158,7 +161,9 @@ else { return token(yytext(), "SI_SINO", yyline, yycolumn); }
 {EspacioEnBlanco}"-" {EspacioEnBlanco}|
 {EspacioEnBlanco}"/" {EspacioEnBlanco}|
 {EspacioEnBlanco}"*" {EspacioEnBlanco} |
-"/" {EspacioEnBlanco} { return token(yytext(), "OP_ARIT", yyline, yycolumn); }
+"/" {EspacioEnBlanco} |
+{Identificador}\%{Identificador} |
+"++" { return token(yytext(), "OP_ARIT", yyline, yycolumn); }
 
 /* Salida */
 {Identificador}"#" |
@@ -172,7 +177,11 @@ else { return token(yytext(), "SI_SINO", yyline, yycolumn); }
 {EspacioEnBlanco}\" |
 {EspacioEnBlanco}\' |
 "/" " " |
-\{ \"   { return token(yytext(), "CONCATENAR", yyline, yycolumn); }
+\{ \"   |
+{EspacioEnBlanco}"\n"{EspacioEnBlanco} |
+{Identificador}"\n"{EspacioEnBlanco} |
+{Identificador}{TerminadorDeLinea}\" |
+{Identificador} "\n" \"\; { return token(yytext(), "CONCATENAR", yyline, yycolumn); }
 
 /* Errores */
 // Número erróneo

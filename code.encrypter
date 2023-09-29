@@ -1,19 +1,35 @@
-numeros= [1, 2, 3, 4, 4, 5, 5, 6, 6, 6, 7, 8, 9]
+use strict;
+use warnings;
+use List::Util qw(sum);
 
-media = numeros.sum/numeros.length.to_f
+my @numeros = (1, 2, 3, 4, 4, 5, 5, 6, 6, 6, 7, 8, 9);
 
-frecuencia = numeros.group_by(&:itself).transform_values(&:count)
-max_frecuencia = frecuencia.values.max
-moda = frecuencia.select { |_, v| v == max_frecuencia }.keys
+my $total = sum(@numeros);
+my $media = $total / @numeros;
 
-numeros_ordenados = numeros.sort
-longitud = numeros_ordenados.length
-mediana = if longitud.odd?
-            numeros_ordenados[longitud/2]
-          else
-            (numeros_ordenados[longitud/(2 - 1)] + numeros_ordenados[longitud/2]) / 2.0
-          end
+my %frecuencia;
+$frecuencia{$_}++ for @numeros;
+my @moda;
+my $max_frecuencia = 0;
+foreach my $numero (keys %frecuencia) {
+    if ($frecuencia{$numero} > $max_frecuencia) {
+        @moda = ($numero);
+        $max_frecuencia = $frecuencia{$numero};
+    } elsif ($frecuencia{$numero} == $max_frecuencia) {
+        push @moda, $numero;
+    }
+}
 
-puts "Media: #{media}"
-puts "Moda: #{moda.join(', ')}  "
-puts "Mediana: #{mediana} "
+my @numeros_ordenados = sort { $a <=> $b } @numeros;
+my $longitud = @numeros_ordenados;
+my $mediana;
+if ($longitud %  2 == 0) {
+    $mediana = ($numeros_ordenados[$longitud / 2 - 1] + $numeros_ordenados[$longitud / 2]) / 2;
+} else {
+    $mediana = $numeros_ordenados[int($longitud / 2)];
+}
+
+# Imprimir resultados
+print "Media: $media \n ";
+print "Moda: @moda \n ";
+print "Mediana: $mediana \n ";

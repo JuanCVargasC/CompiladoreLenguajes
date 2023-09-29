@@ -25,6 +25,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
+import java.lang.reflect.Field;
 
 public class Compilador extends javax.swing.JFrame {
 
@@ -37,6 +38,7 @@ public class Compilador extends javax.swing.JFrame {
     private ArrayList<Production> identProd;// identificadores sintaxis
     private HashMap<String, String> identificadores;//
     private boolean codeHasBeenCompiled = false;
+    String archivo;
 
     public Compilador() {
         initComponents();
@@ -155,8 +157,6 @@ public class Compilador extends javax.swing.JFrame {
         btnCompilar.setText("Compilar");
         btnCompilar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JOptionPane.showMessageDialog(null, "Lenguaje de Programacion Ruby",
-                        "INFORMATION_MESSAGE", JOptionPane.INFORMATION_MESSAGE);
                 btnCompilarActionPerformed(evt);
             }
         });
@@ -279,6 +279,7 @@ public class Compilador extends javax.swing.JFrame {
         if (directorio.Open()) {
             colorAnalysis();
             clearFields();
+
         }
     }
 
@@ -295,6 +296,26 @@ public class Compilador extends javax.swing.JFrame {
     }
 
     private void btnCompilarActionPerformed(java.awt.event.ActionEvent evt) {
+        try {
+            Field field = directorio.getClass().getDeclaredField("file");
+            field.setAccessible(true);
+            File archivoAbierto = (File) field.get(directorio);
+
+            if (archivoAbierto != null) {
+                String nombreArchivo = archivoAbierto.getName();
+                int index = nombreArchivo.lastIndexOf('.');
+                if (index > 0) {
+                    nombreArchivo = nombreArchivo.substring(0, index);
+                }
+                JOptionPane.showMessageDialog(null, "Lenguaje es: " + nombreArchivo, "Información",
+                        JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(null, "Ningún archivo abierto.", "Información",
+                        JOptionPane.INFORMATION_MESSAGE);
+            }
+        } catch (NoSuchFieldException | IllegalAccessException e) {
+            e.printStackTrace();
+        }
         if (getTitle().contains("*") || getTitle().equals(title)) {
             if (directorio.Save()) {
                 compile();

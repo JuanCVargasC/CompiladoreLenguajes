@@ -4,7 +4,6 @@
 
 import compilerTools.Token;
 
-
 // See https://github.com/jflex-de/jflex/issues/222
 @SuppressWarnings("FallThrough")
 class Lexer {
@@ -21,75 +20,77 @@ class Lexer {
   /**
    * ZZ_LEXSTATE[l] is the state in the DFA for the lexical state l
    * ZZ_LEXSTATE[l+1] is the state in the DFA for the lexical state l
-   *                  at the beginning of a line
+   * at the beginning of a line
    * l is of the form l = 2*k, k a non negative integer
    */
   private static final int ZZ_LEXSTATE[] = {
-     0, 0
+      0, 0
   };
 
   /**
    * Top-level table for translating characters to character classes
    */
-  private static final int [] ZZ_CMAP_TOP = zzUnpackcmap_top();
+  private static final int[] ZZ_CMAP_TOP = zzUnpackcmap_top();
 
-  private static final String ZZ_CMAP_TOP_PACKED_0 =
-    "\1\0\1\u0100\36\u0200\1\u0300\267\u0200\10\u0400\37\u0200\1\u0500"+
-    "\u1000\u0200";
+  private static final String ZZ_CMAP_TOP_PACKED_0 = "\1\0\1\u0100\36\u0200\1\u0300\267\u0200\10\u0400\37\u0200\1\u0500"
+      +
+      "\u1000\u0200";
 
-  private static int [] zzUnpackcmap_top() {
-    int [] result = new int[4352];
+  private static int[] zzUnpackcmap_top() {
+    int[] result = new int[4352];
     int offset = 0;
     offset = zzUnpackcmap_top(ZZ_CMAP_TOP_PACKED_0, offset, result);
     return result;
   }
 
-  private static int zzUnpackcmap_top(String packed, int offset, int [] result) {
-    int i = 0;       /* index in packed string  */
-    int j = offset;  /* index in unpacked array */
+  private static int zzUnpackcmap_top(String packed, int offset, int[] result) {
+    int i = 0; /* index in packed string */
+    int j = offset; /* index in unpacked array */
     int l = packed.length();
     while (i < l) {
       int count = packed.charAt(i++);
       int value = packed.charAt(i++);
-      do result[j++] = value; while (--count > 0);
+      do
+        result[j++] = value;
+      while (--count > 0);
     }
     return j;
   }
 
-
   /**
    * Second-level tables for translating characters to character classes
    */
-  private static final int [] ZZ_CMAP_BLOCKS = zzUnpackcmap_blocks();
+  private static final int[] ZZ_CMAP_BLOCKS = zzUnpackcmap_blocks();
 
-  private static final String ZZ_CMAP_BLOCKS_PACKED_0 =
-    "\11\0\1\1\1\2\1\3\1\4\1\5\22\0\1\1"+
-    "\1\0\1\6\1\7\1\10\1\0\1\11\1\12\1\13"+
-    "\1\14\1\15\1\16\1\17\1\16\1\20\1\21\1\22"+
-    "\11\23\1\24\1\25\1\0\1\26\1\0\1\27\1\10"+
-    "\32\30\1\31\1\0\1\32\1\0\1\30\1\0\14\30"+
-    "\1\33\13\30\1\34\1\30\1\35\1\36\1\37\7\0"+
-    "\1\3\33\0\1\30\7\0\1\30\3\0\1\30\3\0"+
-    "\1\30\1\0\1\30\6\0\1\30\1\0\1\30\6\0"+
-    "\1\30\217\0\1\30\15\0\1\30\u01b6\0\1\30\3\0"+
-    "\1\30\13\0\2\3\6\0\1\30\317\0\u0100\3\375\0"+
-    "\1\30\2\0";
+  private static final String ZZ_CMAP_BLOCKS_PACKED_0 = "\11\0\1\1\1\2\1\3\1\4\1\5\22\0\1\1" +
+      "\1\0\1\6\1\7\1\10\1\11\1\12\1\13\1\14" +
+      "\1\15\1\16\1\17\1\20\1\21\1\22\1\23\1\24" +
+      "\11\25\1\26\1\27\1\30\1\31\2\30\1\10\32\32" +
+      "\1\33\1\0\1\34\1\0\1\32\1\0\14\32\1\35" +
+      "\13\32\1\36\1\32\1\37\1\40\1\41\7\0\1\3" +
+      "\33\0\1\32\7\0\1\32\3\0\1\32\3\0\1\32" +
+      "\1\0\1\32\6\0\1\32\1\0\1\32\6\0\1\32" +
+      "\217\0\1\32\15\0\1\32\u01b6\0\1\32\3\0\1\32" +
+      "\13\0\2\3\6\0\1\32\317\0\u0100\3\375\0\1\32" +
+      "\2\0";
 
-  private static int [] zzUnpackcmap_blocks() {
-    int [] result = new int[1536];
+  private static int[] zzUnpackcmap_blocks() {
+    int[] result = new int[1536];
     int offset = 0;
     offset = zzUnpackcmap_blocks(ZZ_CMAP_BLOCKS_PACKED_0, offset, result);
     return result;
   }
 
-  private static int zzUnpackcmap_blocks(String packed, int offset, int [] result) {
-    int i = 0;       /* index in packed string  */
-    int j = offset;  /* index in unpacked array */
+  private static int zzUnpackcmap_blocks(String packed, int offset, int[] result) {
+    int i = 0; /* index in packed string */
+    int j = offset; /* index in unpacked array */
     int l = packed.length();
     while (i < l) {
       int count = packed.charAt(i++);
       int value = packed.charAt(i++);
-      do result[j++] = value; while (--count > 0);
+      do
+        result[j++] = value;
+      while (--count > 0);
     }
     return j;
   }
@@ -97,62 +98,63 @@ class Lexer {
   /**
    * Translates DFA states to action switch labels.
    */
-  private static final int [] ZZ_ACTION = zzUnpackAction();
+  private static final int[] ZZ_ACTION = zzUnpackAction();
 
-  private static final String ZZ_ACTION_PACKED_0 =
-    "\1\0\1\1\1\2\3\1\1\3\1\4\1\5\1\6"+
-    "\1\7\1\1\2\10\1\11\1\12\1\13\1\3\1\14"+
-    "\1\15\1\16\1\14\1\17\1\3\1\20\1\21\1\0"+
-    "\2\21\1\2\1\0\1\22\1\23\1\24\1\0\1\2"+
-    "\1\24\1\25\1\24\1\14\1\0\1\22\2\0\2\2"+
-    "\1\24\1\23\1\0\1\22\3\0\1\2\1\0\1\22"+
-    "\1\0\1\2\1\0\1\22\1\0\2\26\1\22";
+  private static final String ZZ_ACTION_PACKED_0 = "\1\0\1\1\1\2\3\1\1\3\1\4\1\5\1\1" +
+      "\1\6\1\7\1\1\2\10\1\11\1\12\1\3\1\13" +
+      "\1\14\1\15\1\16\1\14\1\17\1\3\1\20\1\21" +
+      "\1\0\2\21\1\2\1\0\1\22\1\23\2\24\1\0" +
+      "\1\2\1\25\3\0\1\24\1\14\1\0\1\22\2\0" +
+      "\2\2\1\21\1\0\1\24\1\23\1\0\1\22\3\0" +
+      "\1\2\1\0\1\22\1\0\1\2\1\0\1\22\1\0" +
+      "\2\26\1\22";
 
-  private static int [] zzUnpackAction() {
-    int [] result = new int[64];
+  private static int[] zzUnpackAction() {
+    int[] result = new int[70];
     int offset = 0;
     offset = zzUnpackAction(ZZ_ACTION_PACKED_0, offset, result);
     return result;
   }
 
-  private static int zzUnpackAction(String packed, int offset, int [] result) {
-    int i = 0;       /* index in packed string  */
-    int j = offset;  /* index in unpacked array */
+  private static int zzUnpackAction(String packed, int offset, int[] result) {
+    int i = 0; /* index in packed string */
+    int j = offset; /* index in unpacked array */
     int l = packed.length();
     while (i < l) {
       int count = packed.charAt(i++);
       int value = packed.charAt(i++);
-      do result[j++] = value; while (--count > 0);
+      do
+        result[j++] = value;
+      while (--count > 0);
     }
     return j;
   }
 
-
   /**
    * Translates a state to a row index in the transition table
    */
-  private static final int [] ZZ_ROWMAP = zzUnpackRowMap();
+  private static final int[] ZZ_ROWMAP = zzUnpackRowMap();
 
-  private static final String ZZ_ROWMAP_PACKED_0 =
-    "\0\0\0\40\0\100\0\140\0\200\0\240\0\300\0\40"+
-    "\0\40\0\40\0\40\0\340\0\u0100\0\u0120\0\40\0\40"+
-    "\0\40\0\40\0\u0140\0\40\0\40\0\u0160\0\u0180\0\u01a0"+
-    "\0\40\0\40\0\u01c0\0\u01e0\0\u0200\0\u0220\0\u0240\0\u0260"+
-    "\0\u0280\0\u01c0\0\u02a0\0\u02c0\0\40\0\u02e0\0\u0300\0\u0320"+
-    "\0\u0340\0\u0360\0\u0380\0\u03a0\0\40\0\u03c0\0\u03e0\0\u0400"+
-    "\0\u0420\0\u0440\0\u0460\0\u0480\0\u04a0\0\u0480\0\u04c0\0\u04e0"+
-    "\0\u0500\0\u0520\0\u0540\0\u0560\0\u0520\0\40\0\u0580\0\u0580";
+  private static final String ZZ_ROWMAP_PACKED_0 = "\0\0\0\42\0\104\0\146\0\210\0\252\0\314\0\42" +
+      "\0\42\0\356\0\42\0\42\0\u0110\0\u0132\0\u0154\0\42" +
+      "\0\42\0\42\0\42\0\u0176\0\42\0\42\0\u0198\0\u01ba" +
+      "\0\u01dc\0\42\0\42\0\u01fe\0\u0220\0\u0242\0\u0264\0\u0286" +
+      "\0\u02a8\0\u02ca\0\42\0\u01fe\0\u02ec\0\u030e\0\u0330\0\u0352" +
+      "\0\u0374\0\u0396\0\u0396\0\u03b8\0\u03da\0\u03fc\0\u041e\0\u0440" +
+      "\0\42\0\u0462\0\u0484\0\u01ba\0\u04a6\0\u04c8\0\u04ea\0\u050c" +
+      "\0\u052e\0\u0550\0\u0572\0\u0550\0\u0594\0\u05b6\0\u05d8\0\u05fa" +
+      "\0\u061c\0\u063e\0\u05fa\0\42\0\u0660\0\u0660";
 
-  private static int [] zzUnpackRowMap() {
-    int [] result = new int[64];
+  private static int[] zzUnpackRowMap() {
+    int[] result = new int[70];
     int offset = 0;
     offset = zzUnpackRowMap(ZZ_ROWMAP_PACKED_0, offset, result);
     return result;
   }
 
-  private static int zzUnpackRowMap(String packed, int offset, int [] result) {
-    int i = 0;  /* index in packed string  */
-    int j = offset;  /* index in unpacked array */
+  private static int zzUnpackRowMap(String packed, int offset, int[] result) {
+    int i = 0; /* index in packed string */
+    int j = offset; /* index in unpacked array */
     int l = packed.length();
     while (i < l) {
       int high = packed.charAt(i++) << 16;
@@ -164,65 +166,71 @@ class Lexer {
   /**
    * The transition table of the DFA
    */
-  private static final int [] ZZ_TRANS = zzUnpackTrans();
+  private static final int[] ZZ_TRANS = zzUnpackTrans();
 
-  private static final String ZZ_TRANS_PACKED_0 =
-    "\1\2\2\3\1\0\2\3\1\4\1\5\1\6\1\7"+
-    "\1\4\1\10\1\11\2\2\1\12\1\13\1\14\1\15"+
-    "\1\16\1\17\1\20\1\21\1\22\1\23\1\24\1\25"+
-    "\1\26\1\23\1\27\1\30\1\31\41\0\2\3\1\0"+
-    "\2\3\2\32\2\0\1\32\2\0\2\33\2\0\1\33"+
-    "\17\0\2\34\1\0\2\34\22\0\1\35\2\0\2\35"+
-    "\12\0\1\36\12\0\2\37\4\0\1\40\2\0\2\40"+
-    "\33\0\1\41\2\0\2\41\14\0\1\22\27\0\2\42"+
-    "\1\0\2\42\7\0\1\43\3\0\1\44\33\0\2\45"+
-    "\2\0\1\45\2\46\31\0\2\45\2\0\1\45\2\16"+
-    "\23\0\1\32\5\0\2\47\2\0\1\47\2\23\4\0"+
-    "\1\23\2\0\2\23\12\0\1\32\5\0\2\47\2\0"+
-    "\1\47\2\23\4\0\1\23\2\0\1\23\1\50\11\0"+
-    "\1\32\67\0\1\22\2\0\2\42\1\0\2\42\33\0"+
-    "\2\34\1\0\2\34\54\0\2\35\4\0\1\35\2\0"+
-    "\2\35\3\0\2\36\4\0\32\36\22\0\2\51\4\0"+
-    "\1\51\2\0\2\51\25\0\2\52\4\0\1\52\2\0"+
-    "\2\52\25\0\2\41\4\0\1\41\2\0\2\41\3\0"+
-    "\15\53\1\54\22\53\2\44\1\55\2\44\1\56\32\44"+
-    "\22\0\2\46\44\0\1\57\2\0\2\57\12\0\1\32"+
-    "\5\0\2\47\2\0\1\47\2\23\4\0\1\60\2\0"+
-    "\2\60\25\0\2\61\4\0\1\61\2\0\2\61\25\0"+
-    "\2\62\4\0\1\62\2\0\2\62\3\0\15\53\1\63"+
-    "\22\53\15\64\1\65\3\64\1\66\16\64\2\0\1\55"+
-    "\57\0\2\57\4\0\1\57\2\0\2\57\12\0\1\32"+
-    "\5\0\2\47\2\0\1\47\2\60\4\0\1\60\2\0"+
-    "\2\60\25\0\2\67\4\0\1\67\2\0\2\67\25\0"+
-    "\2\70\4\0\1\70\2\0\2\70\3\0\15\53\1\63"+
-    "\3\53\1\55\16\53\15\64\1\71\37\64\1\65\3\64"+
-    "\1\72\16\64\22\0\2\73\4\0\1\73\2\0\2\73"+
-    "\25\0\2\74\4\0\1\74\2\0\2\74\3\0\15\64"+
-    "\1\71\3\64\1\75\16\64\7\0\1\55\11\0\1\75"+
-    "\40\0\2\76\4\0\1\76\2\0\2\76\25\0\2\77"+
-    "\4\0\1\77\2\0\2\77\25\0\2\100\4\0\1\100"+
-    "\2\0\2\100\3\0";
+  private static final String ZZ_TRANS_PACKED_0 = "\1\2\2\3\1\0\2\3\1\4\1\5\2\6\1\7" +
+      "\1\4\1\10\1\11\1\2\1\12\1\13\1\2\1\14" +
+      "\1\15\1\16\1\17\1\20\1\21\1\22\1\23\1\24" +
+      "\1\25\1\26\1\27\1\24\1\30\1\31\1\32\43\0" +
+      "\2\3\1\0\2\3\2\33\3\0\1\33\2\0\2\34" +
+      "\1\0\1\34\1\0\1\34\17\0\2\35\1\0\2\35" +
+      "\24\0\1\36\2\0\2\36\12\0\1\37\14\0\2\40" +
+      "\4\0\1\41\2\0\2\41\35\0\1\42\2\0\2\42" +
+      "\15\0\1\22\46\0\1\43\23\0\2\44\1\0\2\44" +
+      "\10\0\1\45\4\0\1\46\34\0\2\43\1\0\1\43" +
+      "\1\0\1\43\2\47\32\0\2\43\1\0\1\43\1\0" +
+      "\1\43\2\17\16\0\1\50\2\0\1\51\1\0\1\33" +
+      "\1\0\1\52\4\0\2\53\1\0\1\53\1\0\1\53" +
+      "\2\24\4\0\1\24\2\0\2\24\5\0\1\50\2\0" +
+      "\1\51\1\0\1\33\1\0\1\52\4\0\2\53\1\0" +
+      "\1\53\1\0\1\53\2\24\4\0\1\24\2\0\1\24" +
+      "\1\54\11\0\1\33\73\0\1\22\2\0\2\44\1\0" +
+      "\2\44\35\0\2\35\1\0\2\35\60\0\2\36\4\0" +
+      "\1\36\2\0\2\36\3\0\2\37\4\0\34\37\24\0" +
+      "\2\55\4\0\1\55\2\0\2\55\27\0\2\56\4\0" +
+      "\1\56\2\0\2\56\27\0\2\42\4\0\1\42\2\0" +
+      "\2\42\3\0\16\57\1\60\23\57\2\46\1\61\2\46" +
+      "\1\62\34\46\24\0\2\47\15\0\2\35\1\0\2\35" +
+      "\1\63\35\0\1\64\3\0\1\33\65\0\1\65\2\0" +
+      "\2\65\5\0\1\50\2\0\1\51\1\0\1\33\1\0" +
+      "\1\52\4\0\2\53\1\0\1\53\1\0\1\53\2\24" +
+      "\4\0\1\66\2\0\2\66\27\0\2\67\4\0\1\67" +
+      "\2\0\2\67\27\0\2\70\4\0\1\70\2\0\2\70" +
+      "\3\0\16\57\1\71\23\57\16\72\1\73\4\72\1\74" +
+      "\16\72\2\0\1\61\66\0\1\33\36\0\2\65\4\0" +
+      "\1\65\2\0\2\65\5\0\1\50\2\0\1\51\1\0" +
+      "\1\33\1\0\1\52\4\0\2\53\1\0\1\53\1\0" +
+      "\1\53\2\66\4\0\1\66\2\0\2\66\27\0\2\75" +
+      "\4\0\1\75\2\0\2\75\27\0\2\76\4\0\1\76" +
+      "\2\0\2\76\3\0\16\57\1\71\4\57\1\61\16\57" +
+      "\16\72\1\77\41\72\1\73\4\72\1\100\16\72\24\0" +
+      "\2\101\4\0\1\101\2\0\2\101\27\0\2\102\4\0" +
+      "\1\102\2\0\2\102\3\0\16\72\1\77\4\72\1\103" +
+      "\16\72\7\0\1\61\13\0\1\103\42\0\2\104\4\0" +
+      "\1\104\2\0\2\104\27\0\2\105\4\0\1\105\2\0" +
+      "\2\105\27\0\2\106\4\0\1\106\2\0\2\106\3\0";
 
-  private static int [] zzUnpackTrans() {
-    int [] result = new int[1440];
+  private static int[] zzUnpackTrans() {
+    int[] result = new int[1666];
     int offset = 0;
     offset = zzUnpackTrans(ZZ_TRANS_PACKED_0, offset, result);
     return result;
   }
 
-  private static int zzUnpackTrans(String packed, int offset, int [] result) {
-    int i = 0;       /* index in packed string  */
-    int j = offset;  /* index in unpacked array */
+  private static int zzUnpackTrans(String packed, int offset, int[] result) {
+    int i = 0; /* index in packed string */
+    int j = offset; /* index in unpacked array */
     int l = packed.length();
     while (i < l) {
       int count = packed.charAt(i++);
       int value = packed.charAt(i++);
       value--;
-      do result[j++] = value; while (--count > 0);
+      do
+        result[j++] = value;
+      while (--count > 0);
     }
     return j;
   }
-
 
   /** Error code for "Unknown internal scanner error". */
   private static final int ZZ_UNKNOWN_ERROR = 0;
@@ -236,38 +244,40 @@ class Lexer {
    * {@link #ZZ_PUSHBACK_2BIG} respectively.
    */
   private static final String ZZ_ERROR_MSG[] = {
-    "Unknown internal scanner error",
-    "Error: could not match input",
-    "Error: pushback value was too large"
+      "Unknown internal scanner error",
+      "Error: could not match input",
+      "Error: pushback value was too large"
   };
 
   /**
    * ZZ_ATTRIBUTE[aState] contains the attributes of state {@code aState}
    */
-  private static final int [] ZZ_ATTRIBUTE = zzUnpackAttribute();
+  private static final int[] ZZ_ATTRIBUTE = zzUnpackAttribute();
 
-  private static final String ZZ_ATTRIBUTE_PACKED_0 =
-    "\1\0\1\11\5\1\4\11\3\1\4\11\1\1\2\11"+
-    "\3\1\2\11\1\0\3\1\1\0\3\1\1\0\1\1"+
-    "\1\11\3\1\1\0\1\1\2\0\1\11\3\1\1\0"+
-    "\1\1\3\0\1\1\1\0\1\1\1\0\1\1\1\0"+
-    "\1\1\1\0\1\11\2\1";
+  private static final String ZZ_ATTRIBUTE_PACKED_0 = "\1\0\1\11\5\1\2\11\1\1\2\11\3\1\4\11" +
+      "\1\1\2\11\3\1\2\11\1\0\3\1\1\0\2\1" +
+      "\1\11\1\1\1\0\2\1\3\0\2\1\1\0\1\1" +
+      "\2\0\1\11\2\1\1\0\2\1\1\0\1\1\3\0" +
+      "\1\1\1\0\1\1\1\0\1\1\1\0\1\1\1\0" +
+      "\1\11\2\1";
 
-  private static int [] zzUnpackAttribute() {
-    int [] result = new int[64];
+  private static int[] zzUnpackAttribute() {
+    int[] result = new int[70];
     int offset = 0;
     offset = zzUnpackAttribute(ZZ_ATTRIBUTE_PACKED_0, offset, result);
     return result;
   }
 
-  private static int zzUnpackAttribute(String packed, int offset, int [] result) {
-    int i = 0;       /* index in packed string  */
-    int j = offset;  /* index in unpacked array */
+  private static int zzUnpackAttribute(String packed, int offset, int[] result) {
+    int i = 0; /* index in packed string */
+    int j = offset; /* index in unpacked array */
     int l = packed.length();
     while (i < l) {
       int count = packed.charAt(i++);
       int value = packed.charAt(i++);
-      do result[j++] = value; while (--count > 0);
+      do
+        result[j++] = value;
+      while (--count > 0);
     }
     return j;
   }
@@ -282,7 +292,8 @@ class Lexer {
   private int zzLexicalState = YYINITIAL;
 
   /**
-   * This buffer contains the current text to be matched and is the source of the {@link #yytext()}
+   * This buffer contains the current text to be matched and is the source of the
+   * {@link #yytext()}
    * string.
    */
   private char zzBuffer[] = new char[ZZ_BUFFERSIZE];
@@ -301,22 +312,29 @@ class Lexer {
 
   /**
    * Whether the scanner is at the end of file.
+   * 
    * @see #yyatEOF
    */
   private boolean zzAtEOF;
 
   /**
-   * The number of occupied positions in {@link #zzBuffer} beyond {@link #zzEndRead}.
+   * The number of occupied positions in {@link #zzBuffer} beyond
+   * {@link #zzEndRead}.
    *
-   * <p>When a lead/high surrogate has been read from the input stream into the final
-   * {@link #zzBuffer} position, this will have a value of 1; otherwise, it will have a value of 0.
+   * <p>
+   * When a lead/high surrogate has been read from the input stream into the final
+   * {@link #zzBuffer} position, this will have a value of 1; otherwise, it will
+   * have a value of 0.
    */
   private int zzFinalHighSurrogate = 0;
 
   /** Number of newlines encountered up to the start of the matched text. */
   private int yyline;
 
-  /** Number of characters from the last newline up to the start of the matched text. */
+  /**
+   * Number of characters from the last newline up to the start of the matched
+   * text.
+   */
   private int yycolumn;
 
   /** Number of characters up to the start of the matched text. */
@@ -332,15 +350,14 @@ class Lexer {
   private boolean zzEOFDone;
 
   /* user code: */
-    private Token token(String lexeme, String lexicalComp, int line, int column){
-        return new Token(lexeme, lexicalComp, line+1, column+1);
-    }
-
+  private Token token(String lexeme, String lexicalComp, int line, int column) {
+    return new Token(lexeme, lexicalComp, line + 1, column + 1);
+  }
 
   /**
    * Creates a new scanner
    *
-   * @param   in  the java.io.Reader to read input from.
+   * @param in the java.io.Reader to read input from.
    */
   Lexer(java.io.Reader in) {
     this.zzReader = in;
@@ -358,7 +375,7 @@ class Lexer {
    * Refills the input buffer.
    *
    * @return {@code false} iff there was new input.
-   * @exception java.io.IOException  if any I/O-Error occurs
+   * @exception java.io.IOException if any I/O-Error occurs
    */
   private boolean zzRefill() throws java.io.IOException {
 
@@ -367,8 +384,8 @@ class Lexer {
       zzEndRead += zzFinalHighSurrogate;
       zzFinalHighSurrogate = 0;
       System.arraycopy(zzBuffer, zzStartRead,
-                       zzBuffer, 0,
-                       zzEndRead - zzStartRead);
+          zzBuffer, 0,
+          zzEndRead - zzStartRead);
 
       /* translate stored positions */
       zzEndRead -= zzStartRead;
@@ -402,12 +419,12 @@ class Lexer {
         if (numRead == requested) { // We requested too few chars to encode a full Unicode character
           --zzEndRead;
           zzFinalHighSurrogate = 1;
-        } else {                    // There is room in the buffer for at least one more char
-          int c = zzReader.read();  // Expecting to read a paired low surrogate char
+        } else { // There is room in the buffer for at least one more char
+          int c = zzReader.read(); // Expecting to read a paired low surrogate char
           if (c == -1) {
             return true;
           } else {
-            zzBuffer[zzEndRead++] = (char)c;
+            zzBuffer[zzEndRead++] = (char) c;
           }
         }
       }
@@ -418,7 +435,6 @@ class Lexer {
     /* numRead < 0 ==> end of stream */
     return true;
   }
-
 
   /**
    * Closes the input reader.
@@ -434,16 +450,19 @@ class Lexer {
     }
   }
 
-
   /**
    * Resets the scanner to read from a new input stream.
    *
-   * <p>Does not close the old reader.
+   * <p>
+   * Does not close the old reader.
    *
-   * <p>All internal variables are reset, the old input stream <b>cannot</b> be reused (internal
+   * <p>
+   * All internal variables are reset, the old input stream <b>cannot</b> be
+   * reused (internal
    * buffer is discarded and lost). Lexical state is set to {@code ZZ_INITIAL}.
    *
-   * <p>Internal scan buffer is resized down to its initial length, if it has grown.
+   * <p>
+   * Internal scan buffer is resized down to its initial length, if it has grown.
    *
    * @param reader The new input stream.
    */
@@ -461,18 +480,17 @@ class Lexer {
    * Resets the input position.
    */
   private final void yyResetPosition() {
-      zzAtBOL  = true;
-      zzAtEOF  = false;
-      zzCurrentPos = 0;
-      zzMarkedPos = 0;
-      zzStartRead = 0;
-      zzEndRead = 0;
-      zzFinalHighSurrogate = 0;
-      yyline = 0;
-      yycolumn = 0;
-      yychar = 0L;
+    zzAtBOL = true;
+    zzAtEOF = false;
+    zzCurrentPos = 0;
+    zzMarkedPos = 0;
+    zzStartRead = 0;
+    zzEndRead = 0;
+    zzFinalHighSurrogate = 0;
+    yyline = 0;
+    yycolumn = 0;
+    yychar = 0L;
   }
-
 
   /**
    * Returns whether the scanner has reached the end of the reader it reads from.
@@ -483,7 +501,6 @@ class Lexer {
     return zzAtEOF;
   }
 
-
   /**
    * Returns the current lexical state.
    *
@@ -492,7 +509,6 @@ class Lexer {
   public final int yystate() {
     return zzLexicalState;
   }
-
 
   /**
    * Enters a new lexical state.
@@ -503,23 +519,23 @@ class Lexer {
     zzLexicalState = newState;
   }
 
-
   /**
    * Returns the text matched by the current regular expression.
    *
    * @return the matched text.
    */
   public final String yytext() {
-    return new String(zzBuffer, zzStartRead, zzMarkedPos-zzStartRead);
+    return new String(zzBuffer, zzStartRead, zzMarkedPos - zzStartRead);
   }
-
 
   /**
    * Returns the character at the given position from the matched text.
    *
-   * <p>It is equivalent to {@code yytext().charAt(pos)}, but faster.
+   * <p>
+   * It is equivalent to {@code yytext().charAt(pos)}, but faster.
    *
-   * @param position the position of the character to fetch. A value from 0 to {@code yylength()-1}.
+   * @param position the position of the character to fetch. A value from 0 to
+   *                 {@code yylength()-1}.
    *
    * @return the character at {@code position}.
    */
@@ -527,28 +543,32 @@ class Lexer {
     return zzBuffer[zzStartRead + position];
   }
 
-
   /**
    * How many characters were matched.
    *
    * @return the length of the matched text region.
    */
   public final int yylength() {
-    return zzMarkedPos-zzStartRead;
+    return zzMarkedPos - zzStartRead;
   }
-
 
   /**
    * Reports an error that occurred while scanning.
    *
-   * <p>In a well-formed scanner (no or only correct usage of {@code yypushback(int)} and a
+   * <p>
+   * In a well-formed scanner (no or only correct usage of {@code yypushback(int)}
+   * and a
    * match-all fallback rule) this method will only be called with things that
    * "Can't Possibly Happen".
    *
-   * <p>If this method is called, something is seriously wrong (e.g. a JFlex bug producing a faulty
+   * <p>
+   * If this method is called, something is seriously wrong (e.g. a JFlex bug
+   * producing a faulty
    * scanner etc.).
    *
-   * <p>Usual syntax/scanner level error handling should be done in error fallback rules.
+   * <p>
+   * Usual syntax/scanner level error handling should be done in error fallback
+   * rules.
    *
    * @param errorCode the code of the error message to display.
    */
@@ -563,27 +583,26 @@ class Lexer {
     throw new Error(message);
   }
 
-
   /**
    * Pushes the specified amount of characters back into the input stream.
    *
-   * <p>They will be read again by then next call of the scanning method.
+   * <p>
+   * They will be read again by then next call of the scanning method.
    *
-   * @param number the number of characters to be read again. This number must not be greater than
-   *     {@link #yylength()}.
+   * @param number the number of characters to be read again. This number must not
+   *               be greater than
+   *               {@link #yylength()}.
    */
-  public void yypushback(int number)  {
-    if ( number > yylength() )
+  public void yypushback(int number) {
+    if (number > yylength())
       zzScanError(ZZ_PUSHBACK_2BIG);
 
     zzMarkedPos -= number;
   }
 
-
-
-
   /**
-   * Resumes scanning until the next regular expression is matched, the end of input is encountered
+   * Resumes scanning until the next regular expression is matched, the end of
+   * input is encountered
    * or an I/O-Error occurs.
    *
    * @return the next token.
@@ -599,9 +618,9 @@ class Lexer {
     int zzEndReadL = zzEndRead;
     char[] zzBufferL = zzBuffer;
 
-    int [] zzTransL = ZZ_TRANS;
-    int [] zzRowMapL = ZZ_ROWMAP;
-    int [] zzAttrL = ZZ_ATTRIBUTE;
+    int[] zzTransL = ZZ_TRANS;
+    int[] zzRowMapL = ZZ_ROWMAP;
+    int[] zzAttrL = ZZ_ATTRIBUTE;
 
     while (true) {
       zzMarkedPosL = zzMarkedPos;
@@ -609,37 +628,35 @@ class Lexer {
       boolean zzR = false;
       int zzCh;
       int zzCharCount;
-      for (zzCurrentPosL = zzStartRead  ;
-           zzCurrentPosL < zzMarkedPosL ;
-           zzCurrentPosL += zzCharCount ) {
+      for (zzCurrentPosL = zzStartRead; zzCurrentPosL < zzMarkedPosL; zzCurrentPosL += zzCharCount) {
         zzCh = Character.codePointAt(zzBufferL, zzCurrentPosL, zzMarkedPosL);
         zzCharCount = Character.charCount(zzCh);
         switch (zzCh) {
-        case '\u000B':  // fall through
-        case '\u000C':  // fall through
-        case '\u0085':  // fall through
-        case '\u2028':  // fall through
-        case '\u2029':
-          yyline++;
-          yycolumn = 0;
-          zzR = false;
-          break;
-        case '\r':
-          yyline++;
-          yycolumn = 0;
-          zzR = true;
-          break;
-        case '\n':
-          if (zzR)
-            zzR = false;
-          else {
+          case '\u000B': // fall through
+          case '\u000C': // fall through
+          case '\u0085': // fall through
+          case '\u2028': // fall through
+          case '\u2029':
             yyline++;
             yycolumn = 0;
-          }
-          break;
-        default:
-          zzR = false;
-          yycolumn += zzCharCount;
+            zzR = false;
+            break;
+          case '\r':
+            yyline++;
+            yycolumn = 0;
+            zzR = true;
+            break;
+          case '\n':
+            if (zzR)
+              zzR = false;
+            else {
+              yyline++;
+              yycolumn = 0;
+            }
+            break;
+          default:
+            zzR = false;
+            yycolumn += zzCharCount;
         }
       }
 
@@ -661,7 +678,8 @@ class Lexer {
           else
             zzPeek = zzBufferL[zzMarkedPosL] == '\n';
         }
-        if (zzPeek) yyline--;
+        if (zzPeek)
+          yyline--;
       }
       zzAction = -1;
 
@@ -671,10 +689,9 @@ class Lexer {
 
       // set up zzAction for empty match case:
       int zzAttributes = zzAttrL[zzState];
-      if ( (zzAttributes & 1) == 1 ) {
+      if ((zzAttributes & 1) == 1) {
         zzAction = zzState;
       }
-
 
       zzForAction: {
         while (true) {
@@ -682,39 +699,38 @@ class Lexer {
           if (zzCurrentPosL < zzEndReadL) {
             zzInput = Character.codePointAt(zzBufferL, zzCurrentPosL, zzEndReadL);
             zzCurrentPosL += Character.charCount(zzInput);
-          }
-          else if (zzAtEOF) {
+          } else if (zzAtEOF) {
             zzInput = YYEOF;
             break zzForAction;
-          }
-          else {
+          } else {
             // store back cached positions
-            zzCurrentPos  = zzCurrentPosL;
-            zzMarkedPos   = zzMarkedPosL;
+            zzCurrentPos = zzCurrentPosL;
+            zzMarkedPos = zzMarkedPosL;
             boolean eof = zzRefill();
             // get translated positions and possibly new buffer
-            zzCurrentPosL  = zzCurrentPos;
-            zzMarkedPosL   = zzMarkedPos;
-            zzBufferL      = zzBuffer;
-            zzEndReadL     = zzEndRead;
+            zzCurrentPosL = zzCurrentPos;
+            zzMarkedPosL = zzMarkedPos;
+            zzBufferL = zzBuffer;
+            zzEndReadL = zzEndRead;
             if (eof) {
               zzInput = YYEOF;
               break zzForAction;
-            }
-            else {
+            } else {
               zzInput = Character.codePointAt(zzBufferL, zzCurrentPosL, zzEndReadL);
               zzCurrentPosL += Character.charCount(zzInput);
             }
           }
-          int zzNext = zzTransL[ zzRowMapL[zzState] + zzCMap(zzInput) ];
-          if (zzNext == -1) break zzForAction;
+          int zzNext = zzTransL[zzRowMapL[zzState] + zzCMap(zzInput)];
+          if (zzNext == -1)
+            break zzForAction;
           zzState = zzNext;
 
           zzAttributes = zzAttrL[zzState];
-          if ( (zzAttributes & 1) == 1 ) {
+          if ((zzAttributes & 1) == 1) {
             zzAction = zzState;
             zzMarkedPosL = zzCurrentPosL;
-            if ( (zzAttributes & 8) == 8 ) break zzForAction;
+            if ((zzAttributes & 8) == 8)
+              break zzForAction;
           }
 
         }
@@ -726,125 +742,144 @@ class Lexer {
       if (zzInput == YYEOF && zzStartRead == zzCurrentPos) {
         zzAtEOF = true;
         return null;
-      }
-      else {
+      } else {
         switch (zzAction < 0 ? zzAction : ZZ_ACTION[zzAction]) {
-          case 1:
-            { return token(yytext(), "ERROR", yyline, yycolumn);
-            }
-            // fall through
-          case 23: break;
-          case 2:
-            { /*Ignorar*/
-            }
-            // fall through
-          case 24: break;
-          case 3:
-            { return token(yytext(), "OP_LOGICO", yyline, yycolumn);
-            }
-            // fall through
-          case 25: break;
-          case 4:
-            { return token(yytext(), "PARENTESIS_A", yyline, yycolumn);
-            }
-            // fall through
-          case 26: break;
-          case 5:
-            { return token(yytext(), "PARENTESIS_C", yyline, yycolumn);
-            }
-            // fall through
-          case 27: break;
-          case 6:
-            { return token(yytext(), "COMA", yyline, yycolumn);
-            }
-            // fall through
-          case 28: break;
-          case 7:
-            { return token(yytext(), "PUNTOS", yyline, yycolumn);
-            }
-            // fall through
-          case 29: break;
-          case 8:
-            { return token(yytext(), "NUMERO", yyline, yycolumn);
-            }
-            // fall through
-          case 30: break;
-          case 9:
-            { return token(yytext(), "DOS_PUNTOS", yyline, yycolumn);
-            }
-            // fall through
-          case 31: break;
-          case 10:
-            { return token(yytext(), "PUNTO_COMA", yyline, yycolumn);
-            }
-            // fall through
-          case 32: break;
-          case 11:
-            { return token (yytext(), "OP_ASIG", yyline, yycolumn);
-            }
-            // fall through
-          case 33: break;
-          case 12:
-            { return token(yytext(), "RUBY_VAR", yyline, yycolumn);
-            }
-            // fall through
-          case 34: break;
-          case 13:
-            { return token(yytext(), "LLAVE_A", yyline, yycolumn);
-            }
-            // fall through
-          case 35: break;
-          case 14:
-            { return token(yytext(), "LLAVE_C", yyline, yycolumn);
-            }
-            // fall through
-          case 36: break;
-          case 15:
-            { return token(yytext(), "CORCHETE_A", yyline, yycolumn);
-            }
-            // fall through
-          case 37: break;
-          case 16:
-            { return token(yytext(), "CORCHETE_B", yyline, yycolumn);
-            }
-            // fall through
-          case 38: break;
-          case 17:
-            { return token(yytext(), "CONCATENAR", yyline, yycolumn);
-            }
-            // fall through
-          case 39: break;
-          case 18:
-            { return token(yytext(), "ERROR_2", yyline, yycolumn);
-            }
-            // fall through
-          case 40: break;
-          case 19:
-            { return token(yytext(), "PEARL_VAR", yyline, yycolumn);
-            }
-            // fall through
-          case 41: break;
-          case 20:
-            { return token(yytext(), "OP_ARIT", yyline, yycolumn);
-            }
-            // fall through
-          case 42: break;
-          case 21:
-            { return token(yytext(), "ERROR_1", yyline, yycolumn);
-            }
-            // fall through
-          case 43: break;
-          case 22:
-            { return token(yytext(), "COLOR", yyline, yycolumn);
-            }
-            // fall through
-          case 44: break;
+          case 1: {
+            return token(yytext(), "ERROR", yyline, yycolumn);
+          }
+          // fall through
+          case 23:
+            break;
+          case 2: { /* Ignorar */
+          }
+          // fall through
+          case 24:
+            break;
+          case 3: {
+            return token(yytext(), "OP_LOGICO", yyline, yycolumn);
+          }
+          // fall through
+          case 25:
+            break;
+          case 4: {
+            return token(yytext(), "PARENTESIS_A", yyline, yycolumn);
+          }
+          // fall through
+          case 26:
+            break;
+          case 5: {
+            return token(yytext(), "PARENTESIS_C", yyline, yycolumn);
+          }
+          // fall through
+          case 27:
+            break;
+          case 6: {
+            return token(yytext(), "COMA", yyline, yycolumn);
+          }
+          // fall through
+          case 28:
+            break;
+          case 7: {
+            return token(yytext(), "PUNTOS", yyline, yycolumn);
+          }
+          // fall through
+          case 29:
+            break;
+          case 8: {
+            return token(yytext(), "NUMERO", yyline, yycolumn);
+          }
+          // fall through
+          case 30:
+            break;
+          case 9: {
+            return token(yytext(), "DOS_PUNTOS", yyline, yycolumn);
+          }
+          // fall through
+          case 31:
+            break;
+          case 10: {
+            return token(yytext(), "PUNTO_COMA", yyline, yycolumn);
+          }
+          // fall through
+          case 32:
+            break;
+          case 11: {
+            return token(yytext(), "OP_ASIG", yyline, yycolumn);
+          }
+          // fall through
+          case 33:
+            break;
+          case 12: {
+            return token(yytext(), "RUBY_VAR", yyline, yycolumn);
+          }
+          // fall through
+          case 34:
+            break;
+          case 13: {
+            return token(yytext(), "LLAVE_A", yyline, yycolumn);
+          }
+          // fall through
+          case 35:
+            break;
+          case 14: {
+            return token(yytext(), "LLAVE_C", yyline, yycolumn);
+          }
+          // fall through
+          case 36:
+            break;
+          case 15: {
+            return token(yytext(), "CORCHETE_A", yyline, yycolumn);
+          }
+          // fall through
+          case 37:
+            break;
+          case 16: {
+            return token(yytext(), "CORCHETE_B", yyline, yycolumn);
+          }
+          // fall through
+          case 38:
+            break;
+          case 17: {
+            return token(yytext(), "CONCATENAR", yyline, yycolumn);
+          }
+          // fall through
+          case 39:
+            break;
+          case 18: {
+            return token(yytext(), "ERROR_2", yyline, yycolumn);
+          }
+          // fall through
+          case 40:
+            break;
+          case 19: {
+            return token(yytext(), "PEARL_VAR", yyline, yycolumn);
+          }
+          // fall through
+          case 41:
+            break;
+          case 20: {
+            return token(yytext(), "OP_ARIT", yyline, yycolumn);
+          }
+          // fall through
+          case 42:
+            break;
+          case 21: {
+            return token(yytext(), "ERROR_1", yyline, yycolumn);
+          }
+          // fall through
+          case 43:
+            break;
+          case 22: {
+            return token(yytext(), "COLOR", yyline, yycolumn);
+          }
+          // fall through
+          case 44:
+            break;
           default:
             zzScanError(ZZ_NO_MATCH);
         }
       }
     }
   }
-
 
 }
